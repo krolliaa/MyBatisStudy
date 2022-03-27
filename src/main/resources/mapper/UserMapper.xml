@@ -18,4 +18,7 @@
     <select id="selectUserByIdAndPassword" resultType="com.zwm.pojo.User">
         select * from user where id = #{arg0} and password = #{arg1}
     </select>
+    <select id="selectUserByUsernameAndPassword" resultType="com.zwm.pojo.User">
+        select * from user where username = #{myName} and password = #{myPassword}
+    </select>
 </mapper>

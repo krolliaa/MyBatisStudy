@@ -4,6 +4,9 @@ import com.zwm.mapper.UserMapper;
 import com.zwm.pojo.User;
 import com.zwm.util.MyBatisUtil;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AppParameter {
     /*
         MyBatis 可以传递单个参数可以直接传，格式为：#{属性名}，属性可以是基本数据类型也可以是 String 类型
@@ -19,6 +22,11 @@ public class AppParameter {
         System.out.println(user.toString());
         System.out.println(userMapper.insertUser(new User(11, "AK", "123456")));
         user = userMapper.selectUserByIdAndPassword(1, "123456");
+        System.out.println(user.toString());
+        Map<String, Object> data = new HashMap<>();
+        data.put("myName", "AA");
+        data.put("myPassword", "123456");
+        user = userMapper.selectUserByUsernameAndPassword(data);
         System.out.println(user.toString());
     }
 }

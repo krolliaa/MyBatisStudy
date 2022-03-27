@@ -12,4 +12,10 @@
     <select id="selectUserByUserName" resultType="com.zwm.pojo.User">
         select * from user where username = #{myName}
     </select>
+    <insert id="insertUser">
+        insert into user(id, username, password) values(#{id}, #{username}, #{password});
+    </insert>
+    <select id="selectUserByIdAndPassword" resultType="com.zwm.pojo.User">
+        select * from user where id = #{arg0} and password = #{arg1}
+    </select>
 </mapper>

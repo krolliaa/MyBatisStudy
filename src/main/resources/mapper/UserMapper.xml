@@ -9,4 +9,7 @@
     <select id="selectAllUsers" resultType="com.zwm.pojo.User">
         select * from user
     </select>
+    <select id="selectUserByUserName" resultType="com.zwm.pojo.User">
+        select * from user where username = #{myName}
+    </select>
 </mapper>

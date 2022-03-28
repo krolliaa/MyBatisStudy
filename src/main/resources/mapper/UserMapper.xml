@@ -3,22 +3,30 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zwm.mapper.UserMapper">
-    <select id="selectUserById" resultType="com.zwm.pojo.User">
+    <resultMap id="userMap" type="com.zwm.pojo.User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+    </resultMap>
+    <select id="selectUserById" resultType="user">
         select * from user where id = #{id}
     </select>
-    <select id="selectAllUsers" resultType="com.zwm.pojo.User">
+    <select id="selectAllUsers" resultType="user">
         select * from user
     </select>
-    <select id="selectUserByUserName" resultType="com.zwm.pojo.User">
-        select * from user where username = #{myName}
+    <select id="selectUserByUserName" resultType="user">
+        select * from user where 1 = 1
+        <if test="myName != null and myName != ''">
+            and username = #{myName}
+        </if>
     </select>
     <insert id="insertUser">
         insert into user(id, username, password) values(#{id}, #{username}, #{password});
     </insert>
-    <select id="selectUserByIdAndPassword" resultType="com.zwm.pojo.User">
+    <select id="selectUserByIdAndPassword" resultType="user">
         select * from user where id = #{arg0} and password = #{arg1}
     </select>
-    <select id="selectUserByUsernameAndPassword" resultType="com.zwm.pojo.User">
+    <select id="selectUserByUsernameAndPassword" resultType="user">
         select * from user where username = #{myName} and password = #{myPassword}
     </select>
 </mapper>

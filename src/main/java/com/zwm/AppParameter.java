@@ -15,6 +15,11 @@ public class AppParameter {
            那如果不保持一致该如何修改呢？此时就要修改 UserMapper.xml 中的 resultType 改为 resultMap 这个后面会学习到
         2. 以 @Param 的形式传递 ---> User selectUserByUsername(@Param(‘myName) String username);
         3. 以位置形式传递参数，格式如：#{arg0}, #{arg1}
+        4. 以Map形式传递参数，格式如：Map<String, Object> data ---> 引入 #{myUserName}
+
+        如果遇到数据库中属性名和对象的属性名时可以通过修改 sql 语句附加上 as 起别名即可
+        当然这种方式比较麻烦，我们可以通过 ResultMap 的方式来解决列名和属性名不对称的问题
+
     */
     public static void main(String[] args) {
         UserMapper userMapper = MyBatisUtil.getSqlSession().getMapper(UserMapper.class);
